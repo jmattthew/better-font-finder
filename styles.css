@@ -1,0 +1,1212 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+svg {
+	fill-rule: evenodd;
+}
+
+/*******************
+********************
+********************
+
+       HEADER
+
+********************
+********************
+********************/
+
+#header {
+	position: absolute;
+	width: 100vw;
+	height: 50px;
+	top: 0;
+	left: 0;
+	background: white;
+}
+
+#header #header_bar_intro {
+	margin-left: 7px;
+}
+
+#header #header_bar_edit {
+	margin-left: 50px;
+	white-space: nowrap;
+}
+
+#header #header_bar_edit > div {
+	height: 36px;
+	margin: 7px 0 0 7px;
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 0 10px 0 10px;
+	color: rgb(255, 104, 104);
+	background: white;
+	cursor: pointer;
+	transition: color 250ms, background 250ms;
+}
+
+#header #header_bar_edit > div:hover {
+	background: rgb(255, 104, 104);
+	color: white;
+}
+
+#header #header_bar_edit span {
+	position: relative;
+	display: block;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#header .header_bar {
+	overflow-y: hidden;
+	height: 0;
+	transition: height 250ms ease-out;
+	font-size: 0;
+}
+
+#header .header_bar.selected {
+	height: 50px;
+}
+
+#header .header_bar > div {
+	display: inline-block;
+	vertical-align: top;
+	height: 50px;
+	font-family: 'Work Sans', 'Helvetica', 'Arial', sans-serif;
+}
+
+#header #title h1,
+#header #subtitle h2,
+#header #families_count span {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+	padding-right: 20px;
+	margin: 0;
+	font-weight: 300;
+	font-size: 24px;
+	white-space: nowrap;
+	color: #aaa;
+}
+
+#header #subtitle h2 {
+	padding-right: 13px;
+	font-weight: 100;
+}
+
+#header #families_count span {
+	font-weight: 100;
+}
+
+#header #families_count strong {
+	font-weight: 300;
+}
+
+#header #families_count em {
+	font-weight: 300;
+	font-style: normal;
+	color: hsl(24, 100%, 44%);
+}
+
+/* About button in ABOUT section below */
+
+/*******************
+********************
+********************
+
+    LOADING AREA
+
+********************
+********************
+********************/
+
+.waiting_area {
+	position: absolute;
+	width: calc(100vw - 50px);
+	height: calc(100vh - 50px);
+	top: 50px;
+	left: 50px;
+	box-sizing: border-box;
+	background: hsl(0, 0%, 96%);
+	box-shadow: inset 0 5vh 5vh -2.5vh rgba(0, 0, 0, 0.03),
+		inset 0 -5vh 5vh -2.5vh rgba(0, 0, 0, 0.06);
+}
+
+#loading {
+	transition: opacity 500ms;
+}
+
+#loading div {
+	height: calc(25vh - 50px);
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+#loading > div > div {
+    display: inline-block;
+	height: 100%;
+    padding: 3vh;
+    box-sizing: border-box;
+    border-radius: 1.5vh;
+    transition: background 5ms;
+}
+
+#loading span {
+	display: inline-block;
+	vertical-align: top;
+	width: 10vw;
+	height: 100%;
+	margin-left: 1vw;
+	border-radius: 0.5vw;
+	animation-name: bounce;
+	animation-duration: 1500ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-out;
+}
+
+#loading span:nth-child(1) {
+	margin-left: 0;
+}
+
+#loading span:nth-child(2) {
+	animation-delay: 100ms;
+}
+
+#loading span:nth-child(3) {
+	animation-delay: 200ms;
+}
+
+#loading span:nth-child(4) {
+	animation-delay: 300ms;
+}
+
+#loading span:nth-child(5) {
+	animation-delay: 400ms;
+}
+
+@keyframes bounce {
+	0% {
+		opacity: 0;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		transform: scale(0.85);
+	}
+	30% {
+		opacity: 1;
+		box-shadow: 0 0 2vw 0.25vw rgba(0, 0, 0, 0.2);
+		transform: scale(1);
+	}
+	35% {
+		opacity: 1;
+		box-shadow: 0 0 2vw 0.25vw rgba(0, 0, 0, 0.2);
+		transform: scale(1);
+	}
+	65% {
+		opacity: 0;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		transform: scale(0.85);
+	}
+	100% {
+		opacity: 0;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		transform: scale(0.85);
+	}
+}
+
+#no_matches {
+	visibility: hidden;
+	font-size: 0;
+}
+
+#no_matches.open {
+	visibility: visible;
+}
+
+#no_matches > div {
+	height: 36vh;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+#no_matches > div > div {
+	width: 36vh;
+	height: 36vh;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	border-radius: 18vh;
+	background: rgba(0,0,0,0.2);
+	box-shadow: inset 0 0 5vh 0px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	transition: opacity 1000ms ease-in, left 1000ms cubic-bezier(.31,.74,.49,1);
+}
+
+#no_matches > div > div:nth-child(1) {
+	left: -8vh;
+}
+
+#no_matches > div > div:nth-child(2) {
+	left: 8vh;
+}
+
+#no_matches.open > div > div {
+	opacity: 1;
+}
+
+#no_matches.open > div > div:nth-child(1) {
+	left: 6vh;
+}
+
+#no_matches.open > div > div:nth-child(2) {
+	left: -6vh;
+}
+
+/*******************
+********************
+********************
+
+        LIST
+
+********************
+********************
+********************/
+
+#list {
+	position: absolute;
+	width: calc(100vw - 50px);
+	height: calc(100vh - 50px);
+	top: 50px;
+	left: 50px;
+	padding: 7px 0;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background: hsl(0, 0%, 96%);
+	box-shadow:
+		inset 0    5vh   5vh -2.5vh rgba(0, 0, 0, 0.03),
+		inset 0   -5vh   5vh -2.5vh rgba(0, 0, 0, 0.06),
+		inset 5vh  0   2.5vh   -5vh rgba(0, 0, 0, 0.06);
+	opacity: 0;
+	transition: opacity 500ms;
+}
+
+#list.collapse_weights .specimen {
+	display: none;
+}
+
+#list.collapse_weights .specimen.primary {
+	display: block;
+}
+
+.specimen {
+	width: calc(100% - 14px);
+	margin: 0 7px;
+	box-sizing: border-box;
+	color: hsl(0, 0%, 30%);
+	font-size: 0;
+	border-radius: 5px;
+	opacity: 0;
+	transition: color 200ms, background-color 200ms;
+}
+
+.specimen.animate {
+	animation-name: notice;
+	animation-duration: 300ms;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+}
+
+@keyframes notice {
+	0% {
+		transform: scale(1.1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.specimen.filtered_out {
+	display: none;
+}
+
+.specimen > div {
+	display: inline-block;
+	vertical-align: top;
+	transform-origin: 0% 0%;
+}
+
+.specimen .google_link {
+	text-align: right;
+	position: relative;
+	top: 40%;
+	transform: perspective(1px) translateY(-50%);
+}
+
+.specimen span {
+	font-size: 60px;
+  margin-left: 7px;
+  box-sizing: border-box;
+}
+
+.specimen span, .specimen a {
+	white-space: nowrap;
+}
+
+.specimen a {
+	display: inline-block;
+	vertical-align: bottom;
+    padding: 7px;
+	margin-right: 7px;
+	text-decoration: none;
+	box-sizing: border-box;
+	border-radius: 3px;
+	font-size: 18px;
+	font-weight: 300;
+	font-family: 'Work Sans', 'Helvetica', 'Arial', sans-serif;
+	color: rgb(255, 104, 104);
+	box-shadow: 0 0 0 rgb(156, 156, 156);
+	transition: background 250ms, box-shadow 250ms;
+}
+
+.specimen a span {
+	font-size: 12px;
+	margin: 0;
+	vertical-align: super;
+	opacity: 0;
+	display: none;
+	transition: display 1ms 249ms, opacity: 250ms;
+}
+
+.specimen a.show_weights span {
+	opacity: 1;
+	display: inline;
+	transition: display 1ms, opacity: 250ms;
+}
+
+.specimen .favorite {
+	display: inline-block;
+	width: 30px;
+	height: 35px;
+	padding: 11px 8px 0 0;
+	box-sizing: border-box;
+	margin-right: 7px;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background 250ms, box-shadow 250ms;
+}
+
+.specimen .favorite svg {
+	height: 13px;
+	fill: hsla(0, 100%, 100%, 0);
+	stroke: hsl(0, 100%, 70%);
+	stroke-width: 1.5px;
+	transition: fill 250ms;
+}
+
+.specimen .favorite.selected svg {
+	fill: hsl(0, 100%, 70%);
+}
+
+.specimen input {
+	width: 100%;
+	margin: 0 0 0 7px;
+	padding: 0;
+	border: 0;
+	outline: none;
+	background: none;
+	font-size: 60px;
+	color: rgb(255, 104, 104);
+}
+
+/*******************
+********************
+********************
+
+      FILTERS
+
+********************
+********************
+********************/
+
+#filters {
+	position: absolute;
+	width: 100vw;
+	height: calc(100vh - 50px);
+	top: 50px;
+	left: 0;
+	background: white;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#filters #compare {
+    height: 0px;
+    position: relative;
+	top: 7px;
+	left: 7px;
+    margin-bottom: 0px;
+    transition: height 250ms ease-in, margin-bottom 250ms ease-in;
+}
+
+#filters #compare.open {
+    height: 30px;
+    margin-bottom: 28px;
+    transition: height 500ms 250ms ease-out, margin-bottom 500ms 250ms ease-out;
+}
+
+#filters #compare .binary {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 30px;
+	padding: 5px 0px 0 8px;
+	border: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-radius: 3px;
+	box-sizing: border-box;
+	background-color: white;
+	fill: hsl(0, 0%, 65%);
+	cursor: pointer;
+	transition: fill 250ms, background 250ms, box-shadow 250ms;
+}
+
+#filters #compare .binary svg {
+	height: 18px;
+}
+
+#filters #compare .binary.selected {
+	background: hsl(0, 0%, 92%);
+	border: 1px solid hsl(0, 0%, 74%);
+	fill: hsl(0, 0%, 45%);
+	box-shadow:
+		inset  4px 0   4px -4px rgb(156, 156, 156),
+		inset -4px 0   4px -4px rgb(156, 156, 156),
+		inset  0   4px 4px -4px rgb(156, 156, 156),
+		inset  0  -4px 4px -4px rgb(156, 156, 156);
+	border-radius: 3px;
+}
+
+#filters #compare.open .binary {
+    animation-name: alert;
+    animation-delay: 750ms;
+    animation-duration: 1000ms;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+}
+
+@keyframes alert {
+	0% {
+		top: 0;
+		left: 0;
+		width: 36px;
+		height: 30px;
+		padding: 5px 0 0 8px;
+		border-color: hsla(0, 100%, 50%, 0.2);
+		fill: hsl(0, 0%, 65%);
+		background-color: white;
+	}
+	25% {
+		top: -2px;
+		left: -2px;
+		width: 40px;
+		height: 34px;
+		padding: 7px 0 0 10px;
+		border-color: rgb(255, 104, 104);
+		background-color: rgb(255, 104, 104);
+		fill: hsl(0, 0%, 100%);
+		box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+	}
+	75% {
+		top: -2px;
+		left: -2px;
+		width: 40px;
+		height: 34px;
+		padding: 7px 0 0 10px;
+		border-color: rgb(255, 104, 104);
+		background-color: rgb(255, 104, 104);
+		fill: hsl(0, 0%, 100%);
+		box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+	}
+	100% {
+		top: 0;
+		left: 0;
+		width: 36px;
+		height: 30px;
+		padding: 5px 0 0 8px;
+		border-color: hsla(0, 100%, 50%, 0.2);
+		fill: hsl(0, 0%, 65%);
+		background-color: white;
+	}
+}
+
+#filters #categorize {
+	opacity: 0;
+	transition: opacity 500ms;
+    position: relative;
+	top: 7px;
+	left: 7px;
+}
+
+#filters #categorize.open {
+	opacity: 1;
+	transition: opacity 250ms;
+}
+
+#filters #categorize > div {
+	font-size: 0;
+	margin-bottom: 28px;
+}
+
+#filters .opt_group {
+	width: 36px;
+	border-radius: 3px;
+}
+
+#filters .option {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 30px;
+	box-sizing: border-box;
+	border-left: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-right: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-bottom: 1px solid rgba(0,0,0,0.03);
+	background-color: white;
+	fill: hsl(0, 0%, 65%);
+	text-align: center;
+	cursor: pointer;
+	transition: fill 250ms,
+		background 250ms,
+		box-shadow 250ms
+}
+
+/* see media queries below
+#filters .option:hover {
+}
+*/
+
+#filters .option svg {
+	width: 34px;
+	height: 28px;
+}
+
+#filters .option.opt_top {
+	border-top: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-radius: 3px 3px 0 0;
+}
+
+#filters .option.opt_bottom {
+	border-bottom: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-radius: 0 0 3px 3px;
+}
+
+#filters .option.selected {
+	background: hsl(0, 0%, 92%);
+	fill: hsl(0, 0%, 45%);
+	box-shadow:
+		inset  4px 0   4px -4px hsl(0, 0%, 61%),
+		inset -4px 0   4px -4px hsl(0, 0%, 61%),
+		inset  0  -1px 0    0   hsl(0, 0%, 88%);
+	border: none;
+}
+
+#filters .option.opt_top.selected {
+	box-shadow:
+		inset  4px   0 4px -4px rgb(156, 156, 156),
+		inset -4px   0 4px -4px rgb(156, 156, 156),
+		inset  0   4px 4px -4px rgb(156, 156, 156),
+		inset  0  -1px 0    0 hsl(0, 0%, 88%);
+}
+
+#filters .option.opt_bottom.selected {
+	box-shadow:
+		inset 4px 0 4px -4px rgb(156, 156, 156),
+		inset -4px 0 4px -4px rgb(156, 156, 156),
+		inset 0 -4px 4px -4px rgb(156, 156, 156);
+}
+
+#filters .group_accordion {
+	margin-bottom: 3px;
+	width: 36px;
+	height: 30px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	fill: hsl(0, 0%, 65%);
+	background-color: white;
+	cursor: pointer;
+	transition: fill 250ms, background 250ms, box-shadow 250ms;
+}
+
+/* see media queries below
+#filters .group_accordion:hover {
+}
+*/
+
+#filters .group_accordion.selected {
+	background: hsl(0, 0%, 92%);
+	border: none;
+	fill: hsl(0, 0%, 45%);
+	box-shadow:
+		inset  4px 0   4px -4px rgb(156, 156, 156),
+		inset -4px 0   4px -4px rgb(156, 156, 156),
+		inset  0   4px 4px -4px rgb(156, 156, 156),
+		inset  0  -4px 4px -4px rgb(156, 156, 156);
+	border-radius: 3px;
+}
+
+#filters .group_toggle {
+	width: 36px;
+	height: 36px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+#filters .group_toggle > div {
+	height: 16px;
+	position: relative;
+	left: 3px;
+	top: 10px;
+	width: 30px;
+	border-radius: 8px;
+	background-color: hsl(0, 0%, 95%);
+	box-shadow: inset 0 0px 4px 0 hsl(0, 0%, 80%);
+}
+
+#filters .group_toggle > div > div {
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: -2px;
+	left: 0;
+	border-radius: 10px;
+	background-color: hsl(0, 0%, 95%);
+	box-shadow: 0 1px 4px hsla(0, 0%, 0%, .3);
+	transition: left 100ms ease-in;
+}
+
+#filters .group_toggle > div:hover > div {
+	box-shadow: 0 1px 4px rgb(255, 104, 104);
+}
+
+#filters .group_toggle.selected > div {
+	background-color: rgb(255, 104, 104);
+}
+
+#filters .group_toggle.selected > div > div {
+	left: 11px;
+}
+
+#filters #weight {
+	height: 33px;
+	overflow: hidden;
+	transition: height 200ms ease-in;
+}
+
+#filters #weight.open {
+	height: 335px;
+	transition: height 500ms ease-out;
+}
+
+#filters .weight span {
+	display: block;
+	height: 28px;
+	position: relative;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+	font-family: 'Work Sans';
+}
+
+#filters .weight {
+	font-size: 24px;
+	height: 30px;
+}
+
+#filters #w100,
+#list .css100 {
+	font-weight: 100;
+}
+
+#filters #w200,
+#list .css200 {
+	font-weight: 200;
+}
+
+#filters #w300,
+#list .css300 {
+	font-weight: 300;
+}
+
+#filters #w400,
+#list .css400 {
+	font-weight: 400;
+}
+
+#filters #w500,
+#list .css500 {
+	font-weight: 500;
+}
+
+#filters #w600,
+#list .css600 {
+	font-weight: 600;
+}
+
+#filters #w700,
+#list .css700 {
+	font-weight: 700;
+}
+
+#filters #w800,
+#list .css800 {
+	font-weight: 800;
+}
+
+#filters #w900,
+#list .css900 {
+	font-weight: 900;
+}
+
+.zoomed {
+	position: absolute;
+	width: calc(100vw - 50px);
+	height: calc(100vh - 50px);
+	top: 0;
+	left: 50px;
+	margin: 0;
+	z-index: 0;
+	transition: z-index 0ms 500ms;
+}
+
+.zoomed div {
+	position: relative;
+	height: 40vh;
+	top: 48%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	transition: top 250ms 250ms cubic-bezier(.31,.74,.49,1);
+}
+
+.zoomed svg {
+	width: 100%;
+	height: 100%;
+	/* padding prevents the svg dropshadow effect from being cropped */
+	padding: 10vh 0;
+	/* margin offsets padding */
+	margin-top: -10vh;
+	fill: hsla(0,100%,60%,0.8);
+	opacity: 0;
+	transition: opacity 250ms 250ms;
+}
+
+/* see media queries below
+.option:hover ~ .zoomed {
+}
+*/
+
+#filters #zoom #svg_filters {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	padding: 0;
+}
+
+/*******************
+********************
+********************
+
+        ABOUT
+
+********************
+********************
+********************/
+
+#about {
+}
+
+#about.open {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	cursor: pointer;
+}
+
+#about > div {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 100vh;
+	box-sizing: border-box;
+	background-color: hsl(0, 100%, 70%);
+	padding-top: 50px;
+	overflow: auto;
+	cursor: default;
+	transition: width 250ms cubic-bezier(.31,.74,.49,1);
+}
+
+#about.open > div {
+	width: 221px;
+	box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
+	transition: width 500ms cubic-bezier(.31,.74,.49,1);
+}
+
+#about p {
+	display: block;
+	width: 200px;
+	margin: 0 7px 14px 14px;
+	padding: 0;
+  font-family: 'Work Sans', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 200;
+  color: white;
+  font-size: 15px;
+  opacity: 0;
+	transition: opacity 300ms;
+}
+
+#about.open p {
+	opacity: 1;
+	transition: opacity 750ms 150ms;
+}
+
+#about a {
+	color: white;
+	font-weight: 500;
+}
+
+#about a:hover {
+	text-decoration: none;
+}
+
+#header #about_button {
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 0;
+	overflow: hidden;
+	transition: height 250ms ease-out;
+}
+
+#header #about_button.selected {
+	height: 50px;
+}
+
+#header #about_button div {
+	height: 36px;
+	width: 36px;
+	margin: 7px 0 0 7px;
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+	border-radius: 3px;
+	font-size: 24px;
+	font-weight: 500;
+	font-family: 'Croissant One';
+	text-align: center;
+	color: rgb(255, 104, 104);
+	background: white;
+	cursor: pointer;
+	transition: color 250ms, background 250ms, border-radius 500ms;
+}
+
+#header #about_button.open {
+	z-index: 1; /* so that button is visible above about panel */
+}
+
+#header #about_button.open div {
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+	border-radius: 18px;
+}
+
+/* see media queries below
+#header #about_button div:hover {
+}
+*/
+
+#header #about_button span {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+}
+
+/*******************
+********************
+********************
+
+   SMALLER SCREENS
+
+********************
+********************
+********************/
+
+@media all and (max-width: 600px) {
+
+.waiting_area > div {
+	height: calc(20vh - 50px);
+}
+
+.specimen {
+	margin-bottom: 20px;
+}
+
+.specimen .google_link {
+	position: absolute;
+	top: 120%;
+	right: 0;
+}
+
+.specimen a {
+	margin-right: -7px;
+	position: absolute;
+	right: 35px;
+	font-size: 12px;
+}
+
+.specimen a span {
+	font-size: 10px;
+}
+
+.specimen .favorite {
+	padding: 7px 5px 4px 5px;
+	margin-right: -7px;
+}
+
+.specimen .favorite svg {
+	height: 16px;
+}
+
+}
+
+/*******************
+********************
+********************
+
+    HOVER DEVICES
+
+********************
+********************
+********************/
+
+@media (hover: hover) {
+
+/*
+styles for devices that support true hover
+puttng styles here prevents sticky-hover on mobile
+*/
+
+#filters #compare .binary:hover {
+	top: -2px;
+	left: -2px;
+	width: 40px;
+	height: 34px;
+	padding: 7px 0 0 10px;
+	border-color: rgb(255, 104, 104);
+	background-color: rgb(255, 104, 104);
+	fill: hsl(0, 0%, 100%);
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+}
+
+#filters #compare .binary.tapped:hover {
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 30px;
+	padding: 5px 0px 0 8px;
+	border-color: hsla(0, 100%, 50%, 0.2);
+	background-color: white;
+	fill: hsl(0, 0%, 65%);
+	box-shadow: none;
+}
+
+#filters #compare .binary.selected.tapped:hover {
+	background: hsl(0, 0%, 92%);
+	border-color: hsl(0, 0%, 74%);
+	fill: hsl(0, 0%, 45%);
+	box-shadow:
+		inset  4px 0   4px -4px rgb(156, 156, 156),
+		inset -4px 0   4px -4px rgb(156, 156, 156),
+		inset  0   4px 4px -4px rgb(156, 156, 156),
+		inset  0  -4px 4px -4px rgb(156, 156, 156);
+	border-radius: 3px;
+}
+
+#filters .option:hover ~ .zoomed {
+	z-index: 2;
+	transition: z-index 0ms 0ms;
+}
+
+#filters .option:hover ~ .zoomed div {
+	top: 45%;
+	transition: top 500ms cubic-bezier(.31,.74,.49,1);
+}
+
+#classic_stressed:hover + #classic_stressed_zoomed svg,
+#none_unstressed:hover + #none_unstressed_zoomed svg,
+#slab:hover + #slab_zoomed svg,
+#classic:hover + #classic_zoomed svg,
+#none:hover + #none_zoomed svg,
+#round:hover + #round_zoomed svg,
+#othercap:hover + #othercap_zoomed svg,
+#ultra:hover + #ultra_zoomed svg,
+#stressed:hover + #stressed_zoomed svg,
+#unstressed:hover + #unstressed_zoomed svg,
+#hybrid:hover + #hybrid_zoomed svg
+{
+	opacity: 1;
+	transition: opacity 500ms;
+}
+
+#classic_stressed.tapped:hover + #classic_stressed_zoomed svg,
+#none_unstressed.tapped:hover + #none_unstressed_zoomed svg,
+#slab.tapped:hover + #slab_zoomed svg,
+#classic.tapped:hover + #classic_zoomed svg,
+#none.tapped:hover + #none_zoomed svg,
+#round.tapped:hover + #round_zoomed svg,
+#othercap.tapped:hover + #othercap_zoomed svg,
+#ultra.tapped:hover + #ultra_zoomed svg,
+#stressed.tapped:hover + #stressed_zoomed svg,
+#unstressed.tapped:hover + #unstressed_zoomed svg,
+#hybrid.tapped:hover + #hybrid_zoomed svg
+{
+	opacity: 0;
+	transition: opacity 250ms;
+}
+
+#filters .option:hover {
+	top: -2px;
+	left: -2px;
+	width: 40px;
+	height: 34px;
+	margin-bottom: -4px;
+	border-left: 1px solid hsla(0, 100%, 50%, 0);
+	border-right: 1px solid hsla(0, 100%, 50%, 0);
+	border-bottom: 1px solid rgba(0,0,0,0);
+	background: rgb(255, 104, 104);
+	fill: white;
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+	border-radius: 2px;
+	padding-top: 2px;
+	z-index: 1;
+}
+
+#filters .option.tapped:hover {
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 30px;
+	margin-bottom: 0;
+	border-left: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-right: 1px solid hsla(0, 100%, 50%, 0.2);
+	border-bottom: 1px solid rgba(0,0,0,0.03);
+	background-color: white;
+	fill: hsl(0, 0%, 65%);
+	border-radius: 0;
+	padding-top: 0;
+	box-shadow: none;
+}
+
+#filters .option.tapped.selected:hover {
+	background: hsl(0, 0%, 92%);
+	fill: hsl(0, 0%, 45%);
+	border-radius: 0;
+	width: 36px;
+	height: 30px;
+	padding: 0;
+	box-shadow:
+		inset  4px 0   4px -4px hsl(0, 0%, 61%),
+		inset -4px 0   4px -4px hsl(0, 0%, 61%),
+		inset  0  -1px 0    0   hsl(0, 0%, 88%);
+	border: none;
+}
+
+#filters .option.opt_top:hover {
+	border-color: hsla(0, 100%, 50%, 0);
+}
+
+#filters .option.opt_top.selected:hover {
+	border-color: hsla(0, 100%, 50%, 0);
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+}
+
+#filters .option.tapped.opt_top:hover {
+	border-width: 1px 1px 0 1px;
+	border-color: hsla(0, 100%, 50%, 0.2);
+	border-radius: 3px 3px 0 0;
+}
+
+#filters .option.tapped.opt_top.selected:hover {
+	box-shadow:
+		inset  4px   0 4px -4px rgb(156, 156, 156),
+		inset -4px   0 4px -4px rgb(156, 156, 156),
+		inset  0   4px 4px -4px rgb(156, 156, 156),
+		inset  0  -1px 0    0 hsl(0, 0%, 88%);
+	border-radius: 3px 3px 0 0;
+}
+
+#filters .option.opt_bottom:hover {
+	border-color: hsla(0, 100%, 50%, 0);
+}
+
+#filters .option.opt_bottom.selected:hover {
+	border-color: hsla(0, 100%, 50%, 0);
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+}
+
+#filters .option.tapped.opt_bottom:hover {
+	border-width: 0 1px 1px 1px;
+	border-color: hsla(0, 100%, 50%, 0.2);
+	border-radius: 0 0 3px 3px;
+}
+
+#filters .option.tapped.opt_bottom.selected:hover {
+	box-shadow:
+		inset 4px 0 4px -4px rgb(156, 156, 156),
+		inset -4px 0 4px -4px rgb(156, 156, 156),
+		inset 0 -4px 4px -4px rgb(156, 156, 156);
+}
+
+#filters .group_accordion:hover {
+	background: rgb(255, 104, 104);
+	fill: white;
+	box-shadow: none;
+}
+
+#header #about_button div:hover {
+	background: rgb(255, 104, 104);
+	color: white;
+}
+
+.specimen:hover {
+	color: black;
+	background-color: rgba(255,255,255,0.6);
+}
+
+.specimen a:hover {
+	background: white;
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+}
+
+.specimen .favorite:hover {
+	background: white;
+	box-shadow: 0 1.5px 4px rgb(156, 156, 156);
+}
+
+}
+
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title>Find Great Google Fonts Tool by @mattthew</title>
+	<meta name="description" content="Visually filter and compare this curated set of Google Fonts.">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta id="deviceViewPort" name="viewport" content="width=device-width">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<script src="font_database.js"></script>
+	<script src="icons.js"></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<div id="header">
+		<div class="header_bar selected" id="header_bar_intro">
+			<div id="title">
+				<h1>Find great Google Fonts</h1>
+			</div>
+			<div id="subtitle">
+				<h2>Select font families by visual similarity.</h2>
+			</div>
+			<div id="families_count">
+				<span><!-- You have selected X of the Y --></span>
+			</div>
+			<div id="about_button" class="selected">
+				<div><span>i</span></div>
+			</div>
+		</div>
+		<div class="header_bar" id="header_bar_edit">
+			<div><span>SRGOIFAWM&nbsp;asgpdcwmf</span></div>
+			<div><span>0123456789&nbsp;!@#$%&amp;?</span></div>
+			<div><span>The quick brown fox jumps over the lazy dog.</span></div>
+			<div><span>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span></div>
+		</div>
+	</div>
+	<div id="filters">
+		<div id="compare">
+			<div class="binary">
+				<svg viewBox="0 0 45 45"></svg>
+			</div>
+		</div>
+		<div id="categorize" class="open">
+			<div id="presets">
+				<div class="opt_group">
+					<span class="selected option opt_top filter_preset classic stressed w100 w200 w300 w400 w500 w600 w700 w800 w900" id="classic_stressed">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="classic_stressed_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option opt_bottom filter_preset none unstressed w100 w200 w300 w400 w500 w600 w700 w800 w900" id="none_unstressed">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="none_unstressed_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="caps">
+				<div class="opt_group">
+					<span class="option cap opt_top" id="slab">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="slab_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option cap selected" id="classic">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="classic_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option cap" id="none">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="none_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option cap" id="round">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="round_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option cap opt_bottom" id="othercap">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="othercap_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+				</div>
+				<div class="group_toggle selected">
+					<div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div id="contrast">
+				<div class="opt_group">
+					<span class="option contrast opt_top" id="ultra">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="ultra_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option contrast selected" id="stressed">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="stressed_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option contrast" id="unstressed">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="unstressed_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+					<span class="option contrast opt_bottom" id="hybrid">
+						<svg viewBox="0 0 72 60"></svg>
+					</span>
+					<div class="zoomed" id="hybrid_zoomed">
+						<div>
+							<svg viewBox="0 0 72 60"></svg>
+						</div>
+					</div>
+				</div>
+				<div class="group_toggle selected">
+					<div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div id="weight">
+				<div class="group_accordion selected">
+					<div>
+						<svg viewBox="0 0 72 60"></svg>
+					</div>
+				</div>
+				<div class="opt_group">
+					<span class="option weight opt_top selected" id="w100"><span>&bull;</span></span>
+					<span class="option weight selected" id="w200"><span>&bull;</span></span>
+					<span class="option weight selected" id="w300"><span>&bull;</span></span>
+					<span class="option weight selected" id="w400"><span>&bull;</span></span>
+					<span class="option weight selected" id="w500"><span>&bull;</span></span>
+					<span class="option weight selected" id="w600"><span>&bull;</span></span>
+					<span class="option weight selected" id="w700"><span>&bull;</span></span>
+					<span class="option weight selected" id="w800"><span>&bull;</span></span>
+					<span class="option weight opt_bottom selected" id="w900"><span>&bull;</span></span>
+				</div>
+				<div class="group_toggle selected">
+					<div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<svg id="svg_filters" height="0" width="0">
+				<defs>
+					<filter id="svg_filter_1" x="-20%" y="-10%" width="140%" height="130%">
+						<feOffset result="offOut" in="SourceGraphic" dx="0" dy="2" />
+						<feColorMatrix result="matrixOut" in="offOut" type="matrix"
+							values="0.2 0 0 0 0
+											0 0.2 0 0 0
+											0 0 0.2 0 0
+											0 0 0 0.3 0" />
+											<!--
+											R G B A 1
+											1 0 0 0 0 R = 1*R + 0*G + 0*B + 0*A + 0
+											0 1 0 0 0 G = 0*R + 1*G + 0*B + 0*A + 0
+											0 0 1 0 0 B = 0*R + 0*G + 1*B + 0*A + 0
+											0 0 0 1 0 A = 0*R + 0*G + 0*B + 1*A + 0
+											-->
+						<feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="2" />
+						<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		 			</filter>
+				</defs>
+			</svg>
+		</div>
+	</div>
+	<div id="loading" class="waiting_area">
+		<div>
+			<div>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<div id="no_matches" class="waiting_area">
+		<div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="list">
+		<div>
+			<!--
+			<div class="specimen">
+				<div class="sample">
+					<span>Sample</span>
+				</div>
+				<div class="google_link">
+					<a href="https://fonts.google.com/specimen/" target="_blank">Family Name<span>Weight#</span></a>
+					<div class="favorite">
+						<svg viewBox="0 0 45 45"></svg>
+					</div>
+				</div>
+			</div>
+			<style type="text/css">
+				{ font-family: Family; }
+			</style>
+			-->
+		</div>
+	</div>
+	<div id="about">
+		<div>
+			<p>
+				You won't need to understand any any terminology to use this tool because the font list is categorized visually.
+			</p>
+			<p>
+				Visual categories are more exact than terminology.  For example, the terms &ldquo;serif&rdquo; and &ldquo;sans-serif&rdquo; are ambiguous because many fonts blend the visual characteristics of both.
+			</p>
+			<p>
+				 Filter the font list with the buttons at the far left.  By default, the list shows one font-weight per family, but you can expand the weights for more filters.  Star fonts to compare them more easily.  Tap the name of any font for more information.
+			</p>
+			<p>
+				The list includes only fonts that are freely available from Google.
+			</p>
+			<p>
+				This tool was created &amp; is curated by <a href="https://twitter.com/messages/compose?recipient_id=3084491" target="_blank">@mattthew</a>
+			</p>
+		</div>
+	</div>
+</body>
+
+</html>
