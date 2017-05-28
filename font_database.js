@@ -4,7 +4,10 @@
 
 TEMPLATE
 
-Note: Every unique family must have one and only one font-weight where primary = true.  The primary weight should be 400 or whatever is closest to that.
+Notes:
+This list may only contain fonts avialable at Google Fonts.
+Every unique family must have one and only one font-weight where primary = true.
+The primary weight should be 400 or whatever is closest to that.
 
 To do: Refactor database to use one entry per family, and available weights per family.
 
@@ -761,22 +764,6 @@ fonts[fonts.length] = {
 fonts[fonts.length] = {
 	cap: "none",
 	contrast: "unstressed",
-	apparentWeight: "400",
-	cssWeight: "400",
-	primary: true,
-	family: "Helvetica"
-};
-fonts[fonts.length] = {
-	cap: "none",
-	contrast: "unstressed",
-	apparentWeight: "700",
-	cssWeight: "700",
-	primary: false,
-	family: "Helvetica"
-};
-fonts[fonts.length] = {
-	cap: "none",
-	contrast: "unstressed",
 	apparentWeight: "100",
 	cssWeight: "100",
 	primary: false,
@@ -1125,22 +1112,6 @@ fonts[fonts.length] = {
 	cssWeight: "400",
 	primary: true,
 	family: "Sofia"
-};
-fonts[fonts.length] = {
-	cap: "classic",
-	contrast: "stressed",
-	apparentWeight: "400",
-	cssWeight: "400",
-	primary: true,
-	family: "Times"
-};
-fonts[fonts.length] = {
-	cap: "classic",
-	contrast: "stressed",
-	apparentWeight: "700",
-	cssWeight: "700",
-	primary: false,
-	family: "Times"
 };
 fonts[fonts.length] = {
 	cap: "round",

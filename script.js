@@ -2,23 +2,7 @@ var sampleText = "Explore the filters &amp; Tap this text to edit it.";
 var minInputLength = 10;
 var fontsReturned = 0;
 
-// sort by font database by family then cssWeight
-function compare(a, b) {
-	if (a.family < b.family) {
-		return -1;
-	} else if (a.family > b.family) {
-		return 1;
-	} else {
-		if (a.cssWeight < b.cssWeight) {
-			return -1;
-		} else if (a.cssWeight > b.cssWeight) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
-fonts.sort(compare);
+fonts.sort(fontDBsorter);
 
 // load webfonts
 var families = [];
@@ -67,6 +51,42 @@ WebFont.load({
 		console.log(familyName + ' failed to load');
 	}
 });
+
+// Add Helvetica & Times local fonts for comparison
+fonts[fonts.length] = {
+	cap: "none",
+	contrast: "unstressed",
+	apparentWeight: "400",
+	cssWeight: "400",
+	primary: true,
+	family: "Helvetica"
+};
+fonts[fonts.length] = {
+	cap: "none",
+	contrast: "unstressed",
+	apparentWeight: "700",
+	cssWeight: "700",
+	primary: false,
+	family: "Helvetica"
+};
+fonts[fonts.length] = {
+	cap: "classic",
+	contrast: "stressed",
+	apparentWeight: "400",
+	cssWeight: "400",
+	primary: true,
+	family: "Times New Roman"
+};
+fonts[fonts.length] = {
+	cap: "classic",
+	contrast: "stressed",
+	apparentWeight: "700",
+	cssWeight: "700",
+	primary: false,
+	family: "Times New Roman"
+};
+fonts.sort(fontDBsorter);
+
 
 $(document).ready(function() {
 
@@ -474,6 +494,22 @@ function updateLoadingProgress() {
 	$('#loading > div > div').css('background',gradient);
 }
 
+function fontDBsorter(a, b) {
+	// sort by font database by family then cssWeight
+	if (a.family < b.family) {
+		return -1;
+	} else if (a.family > b.family) {
+		return 1;
+	} else {
+		if (a.cssWeight < b.cssWeight) {
+			return -1;
+		} else if (a.cssWeight > b.cssWeight) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+}
 
 
 
