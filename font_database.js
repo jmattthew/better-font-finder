@@ -378,6 +378,22 @@ fonts[fonts.length] = {
 	primary: true,
 	family: "Arapey"
 };
+fonts[fonts.length] = {
+	cap: "classic",
+	contrast: "stressed",
+	apparentWeight: "400",
+	cssWeight: "400",
+	primary: true,
+	family: "Noto Serif"
+};
+fonts[fonts.length] = {
+	cap: "classic",
+	contrast: "stressed",
+	apparentWeight: "700",
+	cssWeight: "700",
+	primary: false,
+	family: "Noto Serif"
+};
 
 
 

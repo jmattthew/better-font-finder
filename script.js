@@ -1,6 +1,8 @@
 var sampleText = "Explore the filters &amp; Tap this text to edit it.";
 var minInputLength = 10;
 var fontsReturned = 0;
+var familiesCount = 0;
+var navUA = navigator.userAgent;
 
 fonts.sort(fontDBsorter);
 
@@ -25,6 +27,7 @@ for ((i = 0), (il = fonts.length); i < il; i++) {
 		}
 	}
 	families[families.length] = str;
+	familiesCount++;
 	i = j - 1;
 }
 
@@ -53,38 +56,42 @@ WebFont.load({
 });
 
 // Add Helvetica & Times local fonts for comparison
-fonts[fonts.length] = {
-	cap: "none",
-	contrast: "unstressed",
-	apparentWeight: "400",
-	cssWeight: "400",
-	primary: true,
-	family: "Helvetica"
-};
-fonts[fonts.length] = {
-	cap: "none",
-	contrast: "unstressed",
-	apparentWeight: "700",
-	cssWeight: "700",
-	primary: false,
-	family: "Helvetica"
-};
-fonts[fonts.length] = {
-	cap: "classic",
-	contrast: "stressed",
-	apparentWeight: "400",
-	cssWeight: "400",
-	primary: true,
-	family: "Times New Roman"
-};
-fonts[fonts.length] = {
-	cap: "classic",
-	contrast: "stressed",
-	apparentWeight: "700",
-	cssWeight: "700",
-	primary: false,
-	family: "Times New Roman"
-};
+if(navUA.indexOf('Android') == -1) {
+	// Helvetica & Times are not currently available on Android devices
+	fonts[fonts.length] = {
+		cap: "none",
+		contrast: "unstressed",
+		apparentWeight: "400",
+		cssWeight: "400",
+		primary: true,
+		family: "Helvetica"
+	};
+	fonts[fonts.length] = {
+		cap: "none",
+		contrast: "unstressed",
+		apparentWeight: "700",
+		cssWeight: "700",
+		primary: false,
+		family: "Helvetica"
+	};
+	fonts[fonts.length] = {
+		cap: "classic",
+		contrast: "stressed",
+		apparentWeight: "400",
+		cssWeight: "400",
+		primary: true,
+		family: "Times New Roman"
+	};
+	fonts[fonts.length] = {
+		cap: "classic",
+		contrast: "stressed",
+		apparentWeight: "700",
+		cssWeight: "700",
+		primary: false,
+		family: "Times New Roman"
+	};
+	familiesCount += 2;
+}
 fonts.sort(fontDBsorter);
 
 
@@ -159,7 +166,16 @@ $(document).ready(function() {
 		$("#list > div").append(html);
 	}
 
+	// Fix links for Helvetica & Times local fonts
+	$('.Helvetica .google_link a, .Times_New_Roman .google_link a').attr('href','#');
+
+
+
+
 	// bind event handlers
+
+
+
 
 	// filter buttons
 	$('#filters').mouseleave(function() {
@@ -331,6 +347,22 @@ $(document).ready(function() {
 		event.stopPropagation();
 	});
 
+	// links for Helvetica & Times local fonts
+	$('.Helvetica .google_link a, .Times_New_Roman .google_link a').click(function() {
+		var about = $('#about div');
+		$(about).data('originalAbout',$(about).html());
+		var html = '';
+		html += '<p>Tap anywhere to <a href="#">close</a> this message.</p>';
+		html += '<p>"Helvetica" &amp; "Times New Roman" are not freely available from Google Fonts, unlike all the other fonts in this list.</p>';
+		html += '<p>They are included for comparison because they are two of the most widely used and historically important fonts.</p>';
+		html += '<p>As of 2017, they are pre-installed on all Mac, Windows, and iOS devices, but not on Android devices.</p>';
+		html += '<p>Tap on any of the other font-name buttons to open that font on the Google Fonts website.</p>'
+		html += '<p><a href="#">Got it!</a></p>'
+		$(about).html(html);
+		$('#about, #about_button').toggleClass('open');
+		return false;
+	});
+
 	// compare buttons
 	$('.favorite').click(function(event) {
 		event.stopPropagation();
@@ -355,6 +387,8 @@ $(document).ready(function() {
 
 	// about
 	$('#about, #about_button').click(function() {
+		var about = $('#about div');
+		$(about).html($(about).data('originalAbout'));
 		$('#about, #about_button').toggleClass('open');
 	});
 
@@ -463,11 +497,11 @@ function filter_list() {
 	$('#loading span').css('animation-iteration-count',1);
 	$('#loading').css('opacity',0);
 	if(count > 0) {
-		$('#families_count').html('<span>Displaying <strong>' + count + ' of the ' + families.length + '</strong></span>.');
+		$('#families_count').html('<span>Displaying <strong>' + count + ' of the ' + familiesCount + '</strong></span>.');
 		$('#list').css('opacity','1');
 		$('#no_matches').removeClass('open');
 	} else {
-		$('#families_count').html('<span><em>All ' + families.length + ' fonts are hidden!</em></span>.');
+		$('#families_count').html('<span><em>All ' + familiesCount + ' fonts are hidden!</em></span>.');
 		$('#list').css('opacity',0);
 		$('#no_matches').addClass('open');
 	}
